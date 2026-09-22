@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Personalize these alongside the visible name and biography below. -->
+  <title>Tobias Wegel</title>
+  <meta name="description" content="Tobias Wegel, Computer Science PhD student at ETH Zurich, researches trustworthy machine learning, efficient LLM evaluation, and learning with limited data.">
+  <meta name="theme-color" content="#ffffff">
+  <script>
+    (() => {
+      let preference;
+      try { preference = localStorage.getItem('theme'); } catch (_) {}
+      const dark = preference === 'dark' || (preference !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      document.querySelector('meta[name="theme-color"]').content = dark ? '#17212d' : '#ffffff';
+    })();
+  </script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page">
+    <div class="header-slot">
+    <header class="header">
+      <h1><a href="#top">Tobias Wegel</a></h1>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#research">Publications</a>
+        <a href="#news">News</a>
+        <a href="blog.html" data-blog-only hidden>Blog</a>
+        <a href="assets/CV-9-26.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14a8 8 0 0 1-10-10A8.5 8.5 0 1 0 20 14Z"/></svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+        </button>
+      </nav>
+    </header>
+    </div>
+
+    <main id="main">
+      <section id="about" aria-labelledby="about-heading">
+        <h2 id="about-heading">about</h2>
+        <div class="about-layout">
+          <div>
+            <!-- Replace these paragraphs with your own biography. -->
+            <p>I am a third year PhD student in Computer Science at ETH Zürich under the supervision of <a href="https://sml.inf.ethz.ch/group/fannyy/">Fanny Yang</a>. 
+              I am part of the <a href="https://sml.inf.ethz.ch/">Statistical Machine Learning group</a>.</p>
+            <!-- in the <a href="https://ml.ethz.ch/">Institute for Machine Learning</a> and associated researcher at the <a href="https://ai.ethz.ch/">ETH AI Center</a>--> 
+            <p>Most of my work focuses on developing statistical algorithms for selecting or combining machine learning models and establishing theoretical guarantees for their performance, particularly in <a href="#research" data-topic="aggregation">aggregation</a> and <a href="#research" data-topic="multi-objective">multi-objective learning</a>.</p>
+            <p>In 2024, I spent a semester at the <a href="https://simons.berkeley.edu/programs/modern-paradigms-generalization">Simons Institute for the Theory of Computing</a> at UC Berkeley, and before starting my PhD, I was a visiting researcher at the University of Oxford advised by <a href="https://www.stats.ox.ac.uk/~rebeschi/">Patrick Rebeschini</a>. I hold a Master's degree in Data Science from ETH Zürich and two Bachelor's degrees from the University of Göttingen, one in Pure Mathematics and one in Mathematical Data Science. </p>
+            <!-- Add real contact links here, for example:
+            <div class="contact-links" aria-label="Contact and profiles">
+              <a href="mailto:you@example.com">Email</a>
+              <a href="https://github.com/YOUR_USERNAME">GitHub</a>
+              <a href="https://www.linkedin.com/in/YOUR_USERNAME/">LinkedIn</a>
+            </div>
+            -->
+          </div>
+          <figure class="portrait">
+            <img src="assets/IMG_0155.JPEG" alt="Portrait of Tobias Wegel" width="282" height="343">
+            <figcaption class="portrait-links">
+              <a href="mailto:twegel@ethz.ch" aria-label="Email Tobias Wegel" title="Email">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/tobias-wegel/" target="_blank" rel="noopener noreferrer" aria-label="Tobias Wegel on LinkedIn" title="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7.5 10v7M11.5 17v-7m0 3a3 3 0 0 1 6 0v4"/><circle cx="7.5" cy="7" r=".8" fill="currentColor" stroke="none"/></svg>
+              </a>
+              <a href="https://scholar.google.com/citations?user=9UTdhpMAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Tobias Wegel on Google Scholar" title="Google Scholar">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m2 8 10-5 10 5-10 5-10-5Zm4 2v6c3 3 9 3 12 0v-6M22 8v8"/></svg>
+              </a>
+              <span class="office">office: CAB G 17</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="research" aria-labelledby="research-heading">
+        <h2 id="research-heading" tabindex="-1">publications</h2>
+        <p class="section-note">Full list on <a href="https://scholar.google.com/citations?user=9UTdhpMAAAAJ&amp;sortby=pubdate">Google Scholar</a>. <sup>*</sup>equal contribution.</p>
+        <div class="publication-filter" role="group" aria-label="Filter publications by topic; selected topics are combined">
+          <button type="button" class="topic-chip" data-topic="aggregation" aria-pressed="false">Aggregation</button>
+          <button type="button" class="topic-chip" data-topic="multi-objective" aria-pressed="false">Multi-objective learning</button>
+          <button type="button" class="clear-filter">Show all publications</button>
+          <span class="filter-status" role="status" aria-live="polite"></span>
+        </div>
+        <p class="copy-status visually-hidden" role="status" aria-live="polite"></p>
+        <ol class="work-list">
+          <li data-topics="aggregation">
+            <article>
+              <h3><button class="paper-toggle" type="button" id="title-2609-05041" aria-expanded="false" aria-controls="abstract-2609-05041">Reconciling Universal and Uniform Learning with $Q$-Aggregation</button></h3>
+              <p class="authors">Mikael Møller Høgsgaard, Patrick Rebeschini, and <strong>Tobias Wegel</strong> <em>(alphabetical order)</em></p>
+              <p class="metadata">Preprint under review <span aria-hidden="true">·</span> 2026 <span aria-hidden="true">·</span> <a href="https://arxiv.org/abs/2609.05041" target="_blank" rel="noopener noreferrer">arXiv</a> <span aria-hidden="true">·</span> <button type="button" class="copy-bibtex" data-citation="bibtex-2609-05041" aria-label="Copy BibTeX citation">BibTeX</button><span data-blog-only hidden> <span aria-hidden="true">·</span> <a href="blog-aggregation-q.html">Blog post</a></span></p>
+              <!-- Add paper, code, or demo links here. -->
+              <div class="paper-abstract" id="abstract-2609-05041" role="region" aria-labelledby="title-2609-05041" hidden>
+                <p>We study regression under bounded responses in terms of excess mean squared error. When the comparator class is finite, this setting is known as model selection aggregation, and achieving minimax excess risk requires improper learning algorithms. Contrary to this, in the universal learning framework no improperness is needed, as simple empirical risk minimization achieves the best-possible exponential learning rate. Hence, the two frameworks suggest different optimal algorithmic principles. This poses the question of best-of-both-worlds guarantees: Are minimax and universal exponential rates achievable by the same algorithm? For finite hypothesis classes, we answer this question in the affirmative by showing that the $Q$-aggregation estimator - which is known to achieve minimax optimal tails - achieves exponential universal rates. A wide range of other estimators and algorithmic principles (ERM, sequential averaging, pruning, and star estimation) do not achieve both. For countably infinite hypothesis classes, we answer the question in the negative by showing that there is an inherent trade-off between achieving exponential universal and minimax uniform rates. This trade-off is exactly traced by combining optimal algorithms from each world using $Q$-aggregation. Besides these results, we prove several additional structural results about universal rates in learning with squared loss.</p>
+              </div>
+              <textarea class="citation-text" id="bibtex-2609-05041" aria-label="BibTeX citation — select and copy" readonly hidden>@misc{hogsgaard2026_260905041,
+  title = {{Reconciling Universal and Uniform Learning with {Q}-Aggregation}},
+  author = {Mikael M{\o}ller H{\o}gsgaard and Patrick Rebeschini and Tobias Wegel},
+  year = {2026},
+  eprint = {2609.05041},
+  archivePrefix = {arXiv},
+  doi = {10.48550/arXiv.2609.05041},
+  url = {https://arxiv.org/abs/2609.05041}
+}</textarea>
+            </article>
+          </li>
+          <li data-topics="aggregation">
+            <article>
+              <h3><button class="paper-toggle" type="button" id="title-2607-02247" aria-expanded="false" aria-controls="abstract-2607-02247">Aggregation with Exponential Weights is Optimal in Expectation</button></h3>
+              <p class="authors">Mikael Møller Høgsgaard, Patrick Rebeschini, and <strong>Tobias Wegel</strong> <em>(alphabetical order)</em></p>
+              <p class="metadata">Preprint under review <span aria-hidden="true">·</span> 2026 <span aria-hidden="true">·</span> <a href="https://arxiv.org/abs/2607.02247" target="_blank" rel="noopener noreferrer">arXiv</a> <span aria-hidden="true">·</span> <button type="button" class="copy-bibtex" data-citation="bibtex-2607-02247" aria-label="Copy BibTeX citation">BibTeX</button></p>
+              <!-- Add paper, code, or demo links here. -->
+              <div class="paper-abstract" id="abstract-2607-02247" role="region" aria-labelledby="title-2607-02247" hidden>
+                <p>The aggregation with exponential weights (AEW) estimator is not fully understood in the basic setting of model selection aggregation with squared loss. In particular, whether it is minimax-rate optimal in expectation for large enough fixed temperatures and under random design has been an open problem since its introduction, which was explicitly posed by Lecué and Mendelson (2013). In this paper, we settle this problem by showing that <em>without</em> requiring a Bernstein-type assumption, the AEW indeed achieves the excess risk $T \log (M) / (n+1)$ in expectation, whenever the temperature $T$ satisfies $(L^2/T)\exp(B/T)\leq \mu /2$. Here, the number of dictionary elements is $M$, the estimator has observed $n$ i.i.d. samples from any distribution, and the loss is assumed to be bounded by $B$, $L$-Lipschitz continuous and $\mu$-strongly convex. For squared loss, we show that $T\geq 4 b^2$ suffices when the predictions and labels are $[0,b]$-valued. Because AEW is known to be suboptimal in expectation for temperatures below some constant, this shows that AEW has a sharp phase transition when the temperature is large enough but constant, as conjectured by Lecué and Mendelson.</p>
+              </div>
+              <textarea class="citation-text" id="bibtex-2607-02247" aria-label="BibTeX citation — select and copy" readonly hidden>@misc{hogsgaard2026_260702247,
+  title = {{Aggregation with Exponential Weights is Optimal in Expectation}},
+  author = {Mikael M{\o}ller H{\o}gsgaard and Patrick Rebeschini and Tobias Wegel},
+  year = {2026},
+  eprint = {2607.02247},
+  archivePrefix = {arXiv},
+  doi = {10.48550/arXiv.2607.02247},
+  url = {https://arxiv.org/abs/2607.02247}
+}</textarea>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h3><button class="paper-toggle" type="button" id="title-2605-06521" aria-expanded="false" aria-controls="abstract-2605-06521">Time-sensitive anytime-valid testing</button></h3>
+              <p class="authors">Eugenio Clerico<sup>*</sup>, <strong>Tobias Wegel</strong><sup>*</sup>, Iskander Azangulov, and Patrick Rebeschini</p>
+              <p class="metadata">Preprint under review <span aria-hidden="true">·</span> 2026 <span aria-hidden="true">·</span> <a href="https://arxiv.org/abs/2605.06521" target="_blank" rel="noopener noreferrer">arXiv</a> <span aria-hidden="true">·</span> <button type="button" class="copy-bibtex" data-citation="bibtex-2605-06521" aria-label="Copy BibTeX citation">BibTeX</button></p>
+              <div class="paper-abstract" id="abstract-2605-06521" role="region" aria-labelledby="title-2605-06521" hidden>
+                <p>Anytime-valid tests allow evidence to be checked during data collection: one can either continue testing or stop and reject the null while still controlling type-I error. Yet, in many applications rejection is useful only if it comes soon enough. We introduce a time-sensitive testing-by-betting framework that favours early rejection by assigning rewards to rejection times and maximising their expected value under a given alternative. This encompasses hard deadlines and softer time preferences. The resulting optimal control problem admits a Bellman representation in terms only of time and evidence against the null, rather than the full history. For hard deadlines, the simple-vs-simple case reduces to a finite-horizon Neyman--Pearson problem and identify the corresponding optimal e-process. Furthermore, we show that exponentially decaying rewards admit a stationary approximation, yielding the exponential-decay-optimal (EDO) criterion: a finite-time-scale counterpart to the classical growth-rate-optimal (GRO) viewpoint in anytime-valid statistics, with the GRO criterion recovered in the large-time-scale limit.</p>
+              </div>
+              <textarea class="citation-text" id="bibtex-2605-06521" aria-label="BibTeX citation — select and copy" readonly hidden>@misc{clerico2026_260506521,
+  title = {{Time-sensitive anytime-valid testing}},
+  author = {Eugenio Clerico and Tobias Wegel and Iskander Azangulov and Patrick Rebeschini},
+  year = {2026},
+  eprint = {2605.06521},
+  archivePrefix = {arXiv},
+  doi = {10.48550/arXiv.2605.06521},
+  url = {https://arxiv.org/abs/2605.06521}
+}</textarea>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h3><button class="paper-toggle" type="button" id="title-2606-07726" aria-expanded="false" aria-controls="abstract-2606-07726">Cutting LLM Evaluation Costs with SySRs: A Bandit Algorithm that Provably Exploits Model Similarity</button></h3>
+              <p class="authors">Zifan Lyu<sup>*</sup>, Chahine Nejma<sup>*</sup>, <strong>Tobias Wegel</strong>, Fanny Yang, and Florian E. Dorner</p>
+              <p class="metadata">International Conference on Machine Learning (ICML) <span aria-hidden="true">·</span> 2026 <span aria-hidden="true">·</span> <a href="https://arxiv.org/abs/2606.07726" target="_blank" rel="noopener noreferrer">arXiv</a> <span aria-hidden="true">·</span> <button type="button" class="copy-bibtex" data-citation="bibtex-2606-07726" aria-label="Copy BibTeX citation">BibTeX</button> <span aria-hidden="true">·</span> <a href="https://github.com/zifanlyu/llm-bandits-sysrs/tree/main" target="_blank" rel="noopener noreferrer">Code</a></p>
+              <!-- Add paper, code, or demo links here. -->
+              <div class="paper-abstract" id="abstract-2606-07726" role="region" aria-labelledby="title-2606-07726" hidden>
+                <p>Large Language Models are typically benchmarked by evaluating every model on every test query. For practitioners seeking the best model to deploy, this is often wasteful: if a model clearly performs worse than others, there is no need to precisely estimate its performance. Best-arm identification algorithms can be naturally applied to drastically reduce costs by adaptively allocating evaluation budget. Further, language models often respond similarly to the same prompt-a property previous work has tried to leverage with mixed success. We propose Synchronized Successive Rejects (SySRs), augmenting the classical Successive Rejects algorithm with paired comparisons. Unlike prior attempts to leverage model similarity in best-model identification, our approach is hyperparameter-free and enjoys performance guarantees that improve with the degree of similarity between evaluated models. Empirically, our method outperforms all baselines in terms of average error rate across 15 standard benchmarks, and in terms of worst-case budget for reliably identifying the best model.</p>
+              </div>
+              <textarea class="citation-text" id="bibtex-2606-07726" aria-label="BibTeX citation — select and copy" readonly hidden>@inproceedings{lyu2026_260607726,
+  title = {{Cutting {LLM} Evaluation Costs with {SySRs}: A Bandit Algorithm that Provably Exploits Model Similarity}},
+  author = {Zifan Lyu and Chahine Nejma and Tobias Wegel and Fanny Yang and Florian E. Dorner},
+  year = {2026},
+  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
+  url = {https://arxiv.org/abs/2606.07726}
+}</textarea>
+            </article>
+          </li>
+          <li data-topics="aggregation multi-objective">
+            <article>
+              <h3><button class="paper-toggle" type="button" id="title-2605-30997" aria-expanded="false" aria-controls="abstract-2605-30997">Hedging on the Frontier: Learning New Tasks with Few Samples</button></h3>
+              <p class="authors"><strong>Tobias Wegel</strong>, Federico Di Gennaro<sup>*</sup>, Geelon So<sup>*</sup>, and Fanny Yang</p>
+              <p class="metadata">International Conference on Machine Learning (ICML) <span aria-hidden="true">·</span> 2026 <span aria-hidden="true">·</span> <span class="presentation-badge">Spotlight</span> <span aria-hidden="true">·</span> <a href="https://arxiv.org/abs/2605.30997" target="_blank" rel="noopener noreferrer">arXiv</a> <span aria-hidden="true">·</span> <button type="button" class="copy-bibtex" data-citation="bibtex-2605-30997" aria-label="Copy BibTeX citation">BibTeX</button> <span aria-hidden="true">·</span> <a href="https://github.com/FedericoDiGennaro/Hedging-on-the-Frontier" target="_blank" rel="noopener noreferrer">Code</a></p>
+              <div class="paper-abstract" id="abstract-2605-30997" role="region" aria-labelledby="title-2605-30997" hidden>
+                <p>When a learner faces a new task with few samples, it must leverage any available side information. In practice, this often comes in the form of model evaluations on related tasks in public benchmarks. A key question then is how to model task relatedness such that it is both realistic and the benchmark evaluations lead to provable gains. Empirically, we observe that weak monotonicity is often approximately satisfied: if a model dominates another on many benchmarks, it also tends to outperform on the new task. We explore the statistical complexity of learning under (approximate) weak monotonicity, leveraging it within two learning paradigms: transfer learning and model selection aggregation. We show that not only can we prune the model class based on monotonicity, but we can also further adapt to the geometry of the available trade-offs by hedging on the frontier.</p>
+              </div>
+              <textarea class="citation-text" id="bibtex-2605-30997" aria-label="BibTeX citation — select and copy" readonly hidden>@inproceedings{wegel2026_260530997,
+  title = {{Hedging on the Frontier: Learning New Tasks with Few Samples}},
+  author = {Wegel, Tobias and Di Gennaro, Federico and So, Geelon and Yang, Fanny},
+  year = {2026},
+  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
+  url = {https://arxiv.org/abs/2605.30997}
+}</textarea>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h3><button class="paper-toggle" type="button" id="title-2503-03426" aria-expanded="false" aria-controls="abstract-2503-03426">Sharp Risk Bounds for Early-Stopping in Gaussian Linear Regression</button></h3>
+              <p class="authors"><strong>Tobias Wegel</strong>, Gil Kur, and Patrick Rebeschini</p>
+              <p class="metadata">International Conference on Artificial Intelligence and Statistics (AISTATS) <span aria-hidden="true">·</span> 2026 <span aria-hidden="true">·</span> <a href="https://arxiv.org/abs/2503.03426" target="_blank" rel="noopener noreferrer">arXiv</a> <span aria-hidden="true">·</span> <a href="https://proceedings.mlr.press/v300/wegel26a.html" target="_blank" rel="noopener noreferrer">Proceedings</a> <span aria-hidden="true">·</span> <button type="button" class="copy-bibtex" data-citation="bibtex-2503-03426" aria-label="Copy BibTeX citation">BibTeX</button></p>
+              <div class="paper-abstract" id="abstract-2503-03426" role="region" aria-labelledby="title-2503-03426" hidden>
+                <p>We study early-stopped mirror descent (ESMD) for high-dimensional Gaussian linear regression over arbitrary convex bodies and design matrices, where the task is to minimize the in-sample mean squared error. Our main result shows that some of the sharpest risk bounds for the least squares estimator (LSE), based on the local Gaussian width, extend to ESMD. We derive sufficient conditions on the potential, expressed via the Minkowski functional, under which our result holds. These conditions allow us to construct new potentials and analyze existing ones. Our results then yield general sufficient conditions for minimax optimality of ESMD, provide a systematic comparison with the LSE, and establish the tightest known risk bound in the $\ell_1$-constrained setting.</p>
+              </div>
+              <textarea class="citation-text" id="bibtex-2503-03426" aria-label="BibTeX citation — select and copy" readonly hidden>@inproceedings{wegel2026_250303426,
+  title = {{Sharp Risk Bounds for Early-Stopping in Gaussian Linear Regression}},
+  author = {Tobias Wegel and Gil Kur and Patrick Rebeschini},
+  year = {2026},
+  booktitle = {Proceedings of The 29th International Conference on Artificial Intelligence and Statistics},
+  volume = {300},
+  url = {https://proceedings.mlr.press/v300/wegel26a.html},
+  pages = {1792--1800},
+  publisher = {PMLR},
+  series = {Proceedings of Machine Learning Research}
+}</textarea>
+            </article>
+          </li>
+          <li data-topics="multi-objective">
+            <article>
+              <h3><button class="paper-toggle" type="button" id="title-2508-17152" aria-expanded="false" aria-controls="abstract-2508-17152">On the sample complexity of semi-supervised multi-objective learning</button></h3>
+              <p class="authors"><strong>Tobias Wegel</strong>, Geelon So, Junhyung Park, and Fanny Yang</p>
+              <p class="metadata">Neural Information Processing Systems (NeurIPS) <span aria-hidden="true">·</span> 2025 <span aria-hidden="true">·</span> <span class="presentation-badge">Spotlight</span> <span aria-hidden="true">·</span> <a href="https://arxiv.org/abs/2508.17152" target="_blank" rel="noopener noreferrer">arXiv</a> <span aria-hidden="true">·</span> <a href="https://papers.nips.cc/paper_files/paper/2025/hash/ba92c896779f1477b9fddf9f380ae3f3-Abstract-Conference.html" target="_blank" rel="noopener noreferrer">Proceedings</a> <span aria-hidden="true">·</span> <button type="button" class="copy-bibtex" data-citation="bibtex-2508-17152" aria-label="Copy BibTeX citation">BibTeX</button></p>
+              <div class="paper-abstract" id="abstract-2508-17152" role="region" aria-labelledby="title-2508-17152" hidden>
+                <p>In multi-objective learning (MOL), several possibly competing prediction tasks must be solved jointly by a single model. Achieving good trade-offs may require a model class $\mathcal{G}$ with larger capacity than what is necessary for solving the individual tasks. This, in turn, increases the statistical cost, as reflected in known MOL bounds that depend on the complexity of $\mathcal{G}$. We show that this cost is unavoidable for some losses, even in an idealized semi-supervised setting, where the learner has access to the Bayes-optimal solutions for the individual tasks as well as the marginal distributions over the covariates. On the other hand, for objectives defined with Bregman losses, we prove that the complexity of $\mathcal{G}$ may come into play only in terms of unlabeled data. Concretely, we establish sample complexity upper bounds, showing precisely when and how unlabeled data can significantly alleviate the need for labeled data. These rates are achieved by a simple, semi-supervised algorithm via pseudo-labeling.</p>
+              </div>
+              <textarea class="citation-text" id="bibtex-2508-17152" aria-label="BibTeX citation — select and copy" readonly hidden>@inproceedings{wegel2025_250817152,
+  title = {{On the sample complexity of semi-supervised multi-objective learning}},
+  author = {Tobias Wegel and Geelon So and Junhyung Park and Fanny Yang},
+  year = {2025},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume = {38},
+  url = {https://papers.nips.cc/paper_files/paper/2025/hash/ba92c896779f1477b9fddf9f380ae3f3-Abstract-Conference.html},
+  doi = {10.52202/085713-4277}
+}</textarea>
+            </article>
+          </li>
+          <li data-topics="multi-objective">
+            <article>
+              <h3><button class="paper-toggle" type="button" id="title-2503-08849" aria-expanded="false" aria-controls="abstract-2503-08849">Learning Pareto manifolds in high dimensions: How can regularization help?</button></h3>
+              <p class="authors"><strong>Tobias Wegel</strong>, Filip Kovačević, Alexandru Ţifrea, and Fanny Yang</p>
+              <p class="metadata">International Conference on Artificial Intelligence and Statistics (AISTATS) <span aria-hidden="true">·</span> 2025 <span aria-hidden="true">·</span> <a href="https://arxiv.org/abs/2503.08849" target="_blank" rel="noopener noreferrer">arXiv</a> <span aria-hidden="true">·</span> <a href="https://proceedings.mlr.press/v258/wegel25a.html" target="_blank" rel="noopener noreferrer">Proceedings</a> <span aria-hidden="true">·</span> <button type="button" class="copy-bibtex" data-citation="bibtex-2503-08849" aria-label="Copy BibTeX citation">BibTeX</button></p>
+              <div class="paper-abstract" id="abstract-2503-08849" role="region" aria-labelledby="title-2503-08849" hidden>
+                <p>Simultaneously addressing multiple objectives is becoming increasingly important in modern machine learning. At the same time, data is often high-dimensional and costly to label. For a single objective such as prediction risk, conventional regularization techniques are known to improve generalization when the data exhibits low-dimensional structure like sparsity. However, it is largely unexplored how to leverage this structure in the context of multi-objective learning (MOL) with multiple competing objectives. In this work, we discuss how the application of vanilla regularization approaches can fail, and propose a two-stage MOL framework that can successfully leverage low-dimensional structure. We demonstrate its effectiveness experimentally for multi-distribution learning and fairness-risk trade-offs.</p>
+              </div>
+              <textarea class="citation-text" id="bibtex-2503-08849" aria-label="BibTeX citation — select and copy" readonly hidden>@inproceedings{wegel2025_250308849,
+  title = {{Learning Pareto manifolds in high dimensions: How can regularization help?}},
+  author = {Tobias Wegel and Filip Kova{\v{c}}evi{\&#x27;c} and Alexandru {\c{T}}ifrea and Fanny Yang},
+  year = {2025},
+  booktitle = {Proceedings of The 28th International Conference on Artificial Intelligence and Statistics},
+  volume = {258},
+  url = {https://proceedings.mlr.press/v258/wegel25a.html},
+  pages = {4591--4599},
+  publisher = {PMLR},
+  series = {Proceedings of Machine Learning Research}
+}</textarea>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h3><button class="paper-toggle" type="button" id="title-2110-06816" aria-expanded="false" aria-controls="abstract-2110-06816">A Framework for Verification of Wasserstein Adversarial Robustness</button></h3>
+              <p class="authors"><strong>Tobias Wegel</strong>, Felix Assion, David Mickisch, and Florens Greßner</p>
+              <p class="metadata">Preprint <span aria-hidden="true">·</span> 2021 <span aria-hidden="true">·</span> <a href="https://arxiv.org/abs/2110.06816" target="_blank" rel="noopener noreferrer">arXiv</a> <span aria-hidden="true">·</span> <button type="button" class="copy-bibtex" data-citation="bibtex-2110-06816" aria-label="Copy BibTeX citation">BibTeX</button></p>
+              <div class="paper-abstract" id="abstract-2110-06816" role="region" aria-labelledby="title-2110-06816" hidden>
+                <p>Machine learning image classifiers are susceptible to adversarial and corruption perturbations. Adding imperceptible noise to images can lead to severe misclassifications of the machine learning model. Using $L_p$-norms for measuring the size of the noise fails to capture human similarity perception, which is why optimal transport based distance measures like the Wasserstein metric are increasingly being used in the field of adversarial robustness. Verifying the robustness of classifiers using the Wasserstein metric can be achieved by proving the absence of adversarial examples (certification) or proving their presence (attack). In this work we present a framework based on the work by Levine and Feizi, which allows us to transfer existing certification methods for convex polytopes or $L_1$-balls to the Wasserstein threat model. The resulting certification can be complete or incomplete, depending on whether convex polytopes or $L_1$-balls were chosen. Additionally, we present a new Wasserstein adversarial attack that is projected gradient descent based and which has a significantly reduced computational burden compared to existing attack approaches.</p>
+              </div>
+              <textarea class="citation-text" id="bibtex-2110-06816" aria-label="BibTeX citation — select and copy" readonly hidden>@misc{wegel2021_211006816,
+  title = {{A Framework for Verification of Wasserstein Adversarial Robustness}},
+  author = {Tobias Wegel and Felix Assion and David Mickisch and Florens Gre{\ss}ner},
+  year = {2021},
+  eprint = {2110.06816},
+  archivePrefix = {arXiv},
+  doi = {10.48550/arXiv.2110.06816},
+  url = {https://arxiv.org/abs/2110.06816}
+}</textarea>
+            </article>
+          </li>
+        </ol>
+      </section>
+
+      <section id="news" aria-labelledby="news-heading">
+        <h2 id="news-heading">news</h2>
+        <ul class="news-list">
+          <!-- Replace with your own dated updates, newest first. -->
+          <li><span class="date">Sept. 2026</span><span>Codex created a website for me!</span></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 Tobias Wegel (based on a template by <a href="https://jaabmar.github.io/">Javier Abad</a>)</span>
+      <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+    </footer>
+  </div>
+  <script src="site.js"></script>
+</body>
+</html>
