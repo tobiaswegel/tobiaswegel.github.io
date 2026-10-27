@@ -115,12 +115,73 @@ const header = document.querySelector('.header');
 
     }
 
+    let openCitation = null;
+    const closeCitation = () => {
+      if (!openCitation) return;
+      openCitation.box.hidden = true;
+      openCitation.button.setAttribute('aria-expanded', 'false');
+      openCitation = null;
+    };
+    const fitCitation = citation => {
+      citation.style.height = 'auto';
+      citation.style.height = `${citation.scrollHeight}px`;
+    };
+    document.addEventListener('click', event => {
+      if (openCitation && !openCitation.box.contains(event.target) &&
+          !openCitation.button.contains(event.target)) closeCitation();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && openCitation) {
+        const button = openCitation.button;
+        closeCitation();
+        button.focus({ preventScroll: true });
+      }
+    });
+    window.addEventListener('resize', () => {
+      if (openCitation) fitCitation(openCitation.citation);
+    });
     document.querySelectorAll('.copy-bibtex').forEach(button => {
+      const citation = document.getElementById(button.dataset.citation);
+      const box = document.createElement('div');
+      box.className = 'citation-box';
+      box.id = `${citation.id}-box`;
+      box.hidden = true;
+      citation.before(box);
+      box.append(citation);
+      citation.hidden = false;
+      button.setAttribute('aria-controls', box.id);
+      const closeButton = document.createElement('button');
+      closeButton.type = 'button';
+      closeButton.className = 'citation-close';
+      closeButton.textContent = '×';
+      closeButton.setAttribute('aria-label', 'Close BibTeX citation');
+      closeButton.addEventListener('click', () => {
+        closeCitation();
+        button.focus({ preventScroll: true });
+      });
+      const copyButton = document.createElement('button');
+      copyButton.type = 'button';
+      copyButton.className = 'citation-copy';
+      copyButton.textContent = 'Copy';
+      copyButton.setAttribute('aria-label', 'Copy BibTeX citation');
+      copyButton.addEventListener('click', () => button.click());
+      const actions = document.createElement('div');
+      actions.className = 'citation-actions';
+      actions.append(copyButton, closeButton);
+      box.prepend(actions);
       let resetTimer;
       button.addEventListener('click', async () => {
-        const citation = document.getElementById(button.dataset.citation);
         const status = document.querySelector('.copy-status');
         clearTimeout(resetTimer);
+        closeCitation();
+        paperToggles.forEach(toggle => {
+          toggle.setAttribute('aria-expanded', 'false');
+          document.getElementById(toggle.getAttribute('aria-controls')).hidden = true;
+        });
+        box.hidden = false;
+        openCitation = { box, button, citation };
+        fitCitation(citation);
+        button.setAttribute('aria-expanded', 'true');
         let copied = false;
         // The modern API works on HTTPS/localhost. The selection fallback also
         // supports browsers viewing the website directly from a local file.
@@ -130,22 +191,24 @@ const header = document.querySelector('.header');
             copied = true;
           }
         } catch (_) {}
-        if (!copied) {
-          citation.hidden = false;
+        if (!copied && openCitation?.box === box) {
           citation.focus({ preventScroll: true });
           citation.select();
           try { copied = document.execCommand('copy'); } catch (_) {}
         }
         if (copied) {
-          citation.hidden = true;
-          button.focus({ preventScroll: true });
+          if (openCitation?.box === box) button.focus({ preventScroll: true });
           button.textContent = 'Copied!';
+          copyButton.textContent = 'Copied!';
           status.textContent = 'BibTeX citation copied to clipboard.';
         } else {
           button.textContent = 'Select & copy';
           status.textContent = 'Automatic copying is unavailable. The citation is selected below; press Command+C or Ctrl+C to copy.';
         }
-        resetTimer = setTimeout(() => { button.textContent = 'BibTeX'; }, 2500);
+        resetTimer = setTimeout(() => {
+          button.textContent = 'BibTeX';
+          copyButton.textContent = 'Copy';
+        }, 2500);
       });
     });
 
